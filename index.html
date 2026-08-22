@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GlobalCurrency | Plataforma financiera</title>
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ========== BARRA DE NAVEGACIÓN ========== -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#inicio" class="logo">
+                <!-- Logo simple con texto y un ícono SVG -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 7V17M9 10C9 8.89543 9.89543 8 11 8H12C13.1046 8 14 8.89543 14 10C14 11.1046 13.1046 12 12 12H11C9.89543 12 9 12.8954 9 14C9 15.1046 9.89543 16 11 16H13C14.1046 16 15 15.1046 15 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span>GlobalCurrency</span>
+            </a>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#monedas" class="nav-link">Monedas</a>
+                <a href="#tendencias" class="nav-link">Tendencias</a>
+                <a href="#consejos" class="nav-link">Consejos empresariales</a>
+                <a href="#acerca" class="nav-link">Acerca de</a>
+                <a href="#monedas" class="btn btn-primary btn-explorar">Explorar mercados</a>
+            </nav>
+
+            <!-- Botón hamburguesa para móvil -->
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ========== SECCIÓN HERO ========== -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg">
+            <!-- Líneas decorativas animadas (SVG) -->
+            <svg class="hero-lines" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 1200 800">
+                <path d="M0,400 C300,200 600,600 900,300 C1000,200 1100,300 1200,250" stroke="rgba(255,255,255,0.05)" stroke-width="2" fill="none">
+                    <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M0,400 C300,200 600,600 900,300 C1000,200 1100,300 1200,250;M0,420 C300,180 600,620 900,280 C1000,180 1100,280 1200,230;M0,400 C300,200 600,600 900,300 C1000,200 1100,300 1200,250"/>
+                </path>
+                <path d="M0,500 C200,600 400,200 700,400 C900,500 1000,350 1200,400" stroke="rgba(255,255,255,0.03)" stroke-width="2" fill="none">
+                    <animate attributeName="d" dur="10s" repeatCount="indefinite" values="M0,500 C200,600 400,200 700,400 C900,500 1000,350 1200,400;M0,520 C200,580 400,180 700,380 C900,480 1000,330 1200,380;M0,500 C200,600 400,200 700,400 C900,500 1000,350 1200,400"/>
+                </path>
+            </svg>
+        </div>
+        <div class="container hero-content">
+            <h1>El mundo financiero, en una sola plataforma</h1>
+            <p>Consulta valores de las principales monedas internacionales, observa sus variaciones en tiempo real y accede a consejos estratégicos para tu empresa.</p>
+            <div class="hero-buttons">
+                <a href="#monedas" class="btn btn-primary">Ver monedas</a>
+                <a href="#tendencias" class="btn btn-outline">Explorar tendencias</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value">14</span>
+                    <span class="stat-label">Monedas</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">3</span>
+                    <span class="stat-label">Regiones</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">24/7</span>
+                    <span class="stat-label">Actualización</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECCIÓN DE MONEDAS ========== -->
+    <section class="section currencies-section" id="monedas">
+        <div class="container">
+            <div class="section-header">
+                <h2>Monedas internacionales</h2>
+                <p>Sigue de cerca el comportamiento de las divisas más relevantes del mundo.</p>
+            </div>
+            <!-- Contenedor de tarjetas de monedas, se llena con JS -->
+            <div class="currency-grid" id="currency-grid"></div>
+        </div>
+    </section>
+
+    <!-- ========== SECCIÓN DE TENDENCIAS ========== -->
+    <section class="section trends-section" id="tendencias">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tendencias del mercado</h2>
+                <p>Visualiza el comportamiento general y los movimientos más destacados.</p>
+            </div>
+            <div class="trends-container">
+                <!-- Gráfico principal -->
+                <div class="trend-chart card">
+                    <h3>Índice GlobalCurrency</h3>
+                    <div class="chart-wrapper">
+                        <svg id="main-chart" viewBox="0 0 600 250" preserveAspectRatio="none"></svg>
+                    </div>
+                    <div class="chart-legend">
+                        <span><span class="dot dot-up"></span> Subiendo</span>
+                        <span><span class="dot dot-down"></span> Bajando</span>
+                    </div>
+                </div>
+                <!-- Listas de ganadores y perdedores -->
+                <div class="gainers-losers">
+                    <div class="card gainers">
+                        <h3>Mayores alzas</h3>
+                        <ul id="gainers-list"></ul>
+                    </div>
+                    <div class="card losers">
+                        <h3>Mayores bajas</h3>
+                        <ul id="losers-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECCIÓN DE CONSEJOS EMPRESARIALES ========== -->
+    <section class="section tips-section" id="consejos">
+        <div class="container">
+            <div class="section-header">
+                <h2>Consejos para impulsar tu empresa</h2>
+                <p>Recomendaciones estratégicas según el tamaño de tu organización.</p>
+            </div>
+            <div class="tips-grid">
+                <!-- Tarjeta Pequeña Empresa -->
+                <div class="tip-card card" data-tip="pequena">
+                    <div class="tip-icon">🏪</div>
+                    <h3>Pequeña empresa</h3>
+                    <p>Fortalece las bases y asegura un crecimiento sostenido.</p>
+                    <ul class="tip-list">
+                        <li>Controla tus gastos operativos</li>
+                        <li>Administra el flujo de caja</li>
+                        <li>Invierte de forma inteligente</li>
+                        <li>Busca crecimiento progresivo</li>
+                        <li>Conoce a tu mercado</li>
+                    </ul>
+                    <button class="btn btn-outline btn-ver-mas" data-tip-target="pequena">Ver más</button>
+                </div>
+                <!-- Tarjeta Mediana Empresa -->
+                <div class="tip-card card" data-tip="mediana">
+                    <div class="tip-icon">🏢</div>
+                    <h3>Mediana empresa</h3>
+                    <p>Optimiza procesos y prepárate para escalar.</p>
+                    <ul class="tip-list">
+                        <li>Planifica una expansión estratégica</li>
+                        <li>Optimiza tus procesos internos</li>
+                        <li>Adopta tecnología clave</li>
+                        <li>Diversifica tus fuentes de ingreso</li>
+                        <li>Gestiona equipos eficientemente</li>
+                    </ul>
+                    <button class="btn btn-outline btn-ver-mas" data-tip-target="mediana">Ver más</button>
+                </div>
+                <!-- Tarjeta Gran Empresa -->
+                <div class="tip-card card" data-tip="grande">
+                    <div class="tip-icon">🏦</div>
+                    <h3>Gran empresa</h3>
+                    <p>Consolida tu posición y lidera en mercados globales.</p>
+                    <ul class="tip-list">
+                        <li>Desarrolla estrategias internacionales</li>
+                        <li>Gestiona riesgos corporativos</li>
+                        <li>Fomenta la innovación continua</li>
+                        <li>Analiza mercados profundamente</li>
+                        <li>Planifica inversiones a largo plazo</li>
+                    </ul>
+                    <button class="btn btn-outline btn-ver-mas" data-tip-target="grande">Ver más</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECCIÓN INFORMATIVA / ACERCA DE ========== -->
+    <section class="section about-section" id="acerca">
+        <div class="container">
+            <div class="section-header">
+                <h2>Acerca de la plataforma</h2>
+            </div>
+            <div class="about-content card">
+                <p><strong>GlobalCurrency</strong> es una plataforma diseñada para facilitar la visualización de información económica y financiera de diferentes países, ofreciendo además consejos generales orientados al crecimiento empresarial. Nuestro objetivo es brindar una experiencia clara, moderna y confiable para estudiantes, profesionales y organizaciones.</p>
+                <p class="academic-note">⚠️ <em>Nota académica:</em> Esta versión es un proyecto universitario. Los datos mostrados pueden ser simulados o demostrativos y no deben usarse para decisiones financieras reales.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="logo footer-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 7V17M9 10C9 8.89543 9.89543 8 11 8H12C13.1046 8 14 8.89543 14 10C14 11.1046 13.1046 12 12 12H11C9.89543 12 9 12.8954 9 14C9 15.1046 9.89543 16 11 16H13C14.1046 16 15 15.1046 15 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <span>GlobalCurrency</span>
+                </div>
+                <p>Plataforma financiera moderna para el seguimiento de monedas y asesoría empresarial.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Enlaces rápidos</h4>
+                <a href="#inicio">Inicio</a>
+                <a href="#monedas">Monedas</a>
+                <a href="#tendencias">Tendencias</a>
+                <a href="#consejos">Consejos empresariales</a>
+            </div>
+            <div class="footer-info">
+                <h4>Información académica</h4>
+                <p>Proyecto universitario desarrollado con fines educativos. Los datos son simulados.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 GlobalCurrency. Proyecto académico.</p>
+        </div>
+    </footer>
+
+    <!-- ========== MODALES DE CONSEJOS ========== -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal card" id="modal-content">
+            <button class="modal-close" id="modal-close" aria-label="Cerrar">&times;</button>
+            <h3 id="modal-title"></h3>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
