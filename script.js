@@ -26,9 +26,9 @@ const currenciesData = [
     { country: 'Bitcoin', currency: 'Bitcoin', code: 'BTC', symbol: '₿', flag: '🪙', region: 'crypto', baseValue: 0.00001236, currentValue: 0.00001236, decimals: 8 }
 ];
 
-// =========================================================
+// ==========================================================
 // 2. VARIABLES GLOBALES Y CONTROL DE ESTADO
-// =========================================================
+// ==========================================================
 // Historial de cotizaciones para las mini gráficas (Sparklines)
 const historyMap = new Map(); // Llave: código de divisa, Valor: array de números
 const MAX_HISTORY_POINTS = 22; // Cantidad de puntos mostrados en cada sparkline
