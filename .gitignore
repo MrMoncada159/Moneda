@@ -1,0 +1,16 @@
+# Dependencias y archivos de herramientas
+node_modules/
+.npm/
+
+# Archivos temporales y del sistema
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Configuración local, secretos y variables de entorno
+.env
+.env.*
+!.env.example
+*.local
