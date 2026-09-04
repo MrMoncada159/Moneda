@@ -3,35 +3,61 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GlobalCurrency | Plataforma financiera</title>
+    <title>GlobalCurrency | Plataforma Financiera & Estrategia Empresarial</title>
+    <!-- Enlace a Google Fonts para tipografía financiera premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Enlace al archivo CSS externo -->
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+    <!-- ========== CINTA DE MERCADO RODANTE (LIVE TICKER) ========== -->
+    <div class="market-ticker" id="market-ticker" aria-label="Cotizaciones en vivo">
+        <div class="ticker-content" id="ticker-track">
+            <!-- Se llena dinámicamente con JavaScript -->
+        </div>
+    </div>
+
     <!-- ========== BARRA DE NAVEGACIÓN ========== -->
     <header class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#inicio" class="logo">
-                <!-- Logo simple con texto y un ícono SVG -->
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
-                    <path d="M12 7V17M9 10C9 8.89543 9.89543 8 11 8H12C13.1046 8 14 8.89543 14 10C14 11.1046 13.1046 12 12 12H11C9.89543 12 9 12.8954 9 14C9 15.1046 9.89543 16 11 16H13C14.1046 16 15 15.1046 15 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-                <span>GlobalCurrency</span>
+            <a href="#inicio" class="logo" aria-label="GlobalCurrency Inicio">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="url(#logo-grad)" stroke-width="2"/>
+                        <path d="M12 6V18M8.5 9.5C8.5 8.11929 9.61929 7 11 7H13C14.3807 7 15.5 8.11929 15.5 9.5C15.5 10.8807 14.3807 12 13 12H11C9.61929 12 8.5 13.1193 8.5 14.5C8.5 15.8807 9.61929 17 11 17H13.5C14.8807 17 16 15.8807 16 14.5" stroke="url(#logo-grad)" stroke-width="2" stroke-linecap="round"/>
+                        <defs>
+                            <linearGradient id="logo-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#38bdf8"/>
+                                <stop offset="1" stop-color="#3b82f6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="brand-name">GlobalCurrency</span>
+                    <span class="brand-sub">Colegio Bilingüe Los Ángeles</span>
+                </div>
             </a>
 
             <nav class="nav-links" id="nav-links">
                 <a href="#inicio" class="nav-link">Inicio</a>
                 <a href="#monedas" class="nav-link">Monedas</a>
+                <a href="#calculadora" class="nav-link">Calculadora</a>
+                <a href="#tabla-monedas" class="nav-link">Tabla</a>
                 <a href="#tendencias" class="nav-link">Tendencias</a>
-                <a href="#consejos" class="nav-link">Consejos empresariales</a>
+                <a href="#consejos" class="nav-link">Consejos</a>
                 <a href="#acerca" class="nav-link">Acerca de</a>
-                <a href="#monedas" class="btn btn-primary btn-explorar">Explorar mercados</a>
+                <a href="#calculadora" class="btn btn-primary btn-nav">
+                    <span>Conversor de Divisas</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
             </nav>
 
             <!-- Botón hamburguesa para móvil -->
-            <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -41,36 +67,98 @@
 
     <!-- ========== SECCIÓN HERO ========== -->
     <section class="hero" id="inicio">
+        <!-- Efectos de fondo y partículas financieras -->
         <div class="hero-bg">
-            <!-- Líneas decorativas animadas (SVG) -->
+            <div class="hero-glow glow-1"></div>
+            <div class="hero-glow glow-2"></div>
+            <div class="grid-overlay"></div>
             <svg class="hero-lines" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 1200 800">
-                <path d="M0,400 C300,200 600,600 900,300 C1000,200 1100,300 1200,250" stroke="rgba(255,255,255,0.05)" stroke-width="2" fill="none">
-                    <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M0,400 C300,200 600,600 900,300 C1000,200 1100,300 1200,250;M0,420 C300,180 600,620 900,280 C1000,180 1100,280 1200,230;M0,400 C300,200 600,600 900,300 C1000,200 1100,300 1200,250"/>
+                <path d="M0,450 C300,250 600,650 900,320 C1020,220 1100,320 1200,260" stroke="rgba(56, 189, 248, 0.15)" stroke-width="2.5" fill="none">
+                    <animate attributeName="d" dur="10s" repeatCount="indefinite" values="M0,450 C300,250 600,650 900,320 C1020,220 1100,320 1200,260; M0,470 C300,210 600,690 900,290 C1020,190 1100,290 1200,240; M0,450 C300,250 600,650 900,320 C1020,220 1100,320 1200,260"/>
                 </path>
-                <path d="M0,500 C200,600 400,200 700,400 C900,500 1000,350 1200,400" stroke="rgba(255,255,255,0.03)" stroke-width="2" fill="none">
-                    <animate attributeName="d" dur="10s" repeatCount="indefinite" values="M0,500 C200,600 400,200 700,400 C900,500 1000,350 1200,400;M0,520 C200,580 400,180 700,380 C900,480 1000,330 1200,380;M0,500 C200,600 400,200 700,400 C900,500 1000,350 1200,400"/>
+                <path d="M0,560 C250,650 450,250 750,450 C950,550 1050,380 1200,430" stroke="rgba(59, 130, 246, 0.12)" stroke-width="2" fill="none">
+                    <animate attributeName="d" dur="14s" repeatCount="indefinite" values="M0,560 C250,650 450,250 750,450 C950,550 1050,380 1200,430; M0,580 C250,620 450,210 750,410 C950,510 1050,340 1200,400; M0,560 C250,650 450,250 750,450 C950,550 1050,380 1200,430"/>
                 </path>
             </svg>
         </div>
-        <div class="container hero-content">
-            <h1>El mundo financiero, en una sola plataforma</h1>
-            <p>Consulta valores de las principales monedas internacionales, observa sus variaciones en tiempo real y accede a consejos estratégicos para tu empresa.</p>
-            <div class="hero-buttons">
-                <a href="#monedas" class="btn btn-primary">Ver monedas</a>
-                <a href="#tendencias" class="btn btn-outline">Explorar tendencias</a>
+
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span class="badge-text">Proyecto Institucional • Colegio Bilingüe Los Ángeles</span>
+                </div>
+
+                <h1 class="hero-title">
+                    El mundo financiero, <br/>
+                    <span class="text-gradient">en una sola plataforma</span>
+                </h1>
+
+                <p class="hero-desc">
+                    Monitorea el valor en tiempo real de las divisas más influyentes del planeta, analiza las variaciones del mercado global y potencia tus estrategias empresariales con recomendaciones de expertos.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#monedas" class="btn btn-primary btn-lg">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <span>Ver monedas en vivo</span>
+                    </a>
+                    <a href="#calculadora" class="btn btn-secondary btn-lg">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
+                        <span>Calculadora de divisas</span>
+                    </a>
+                    <a href="#tendencias" class="btn btn-outline btn-lg">
+                        <span>Tendencias</span>
+                    </a>
+                </div>
+
+                <!-- Estadísticas de la plataforma -->
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">🌐</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-currencies-count">17</span>
+                            <span class="stat-label">Divisas clave</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-info">
+                            <span class="stat-value">3s</span>
+                            <span class="stat-label">Ciclo de mercado</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-info">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">Simulación activa</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-value">14</span>
-                    <span class="stat-label">Monedas</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">3</span>
-                    <span class="stat-label">Regiones</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">24/7</span>
-                    <span class="stat-label">Actualización</span>
+
+            <!-- Visual destacado del Hero: Mini Card interactiva de resumen -->
+            <div class="hero-visual">
+                <div class="hero-feature-card card">
+                    <div class="feature-card-header">
+                        <div class="market-status">
+                            <span class="pulse-indicator"></span>
+                            <span>Mercados Internacionales Abiertos</span>
+                        </div>
+                        <span class="base-currency-pill">Base: USD ($)</span>
+                    </div>
+
+                    <div class="quick-rates-preview" id="hero-quick-rates">
+                        <!-- Generado por JS con cotizaciones destacadas -->
+                    </div>
+
+                    <div class="feature-card-footer">
+                        <div class="security-tag">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                            <span>Datos verificados para entornos académicos</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,11 +168,158 @@
     <section class="section currencies-section" id="monedas">
         <div class="container">
             <div class="section-header">
-                <h2>Monedas internacionales</h2>
-                <p>Sigue de cerca el comportamiento de las divisas más relevantes del mundo.</p>
+                <span class="section-tag">Mercado Internacional</span>
+                <h2>Cotizaciones en Tiempo Real</h2>
+                <p>Monitorea las fluctuaciones financieras de las economías más representativas del mundo.</p>
             </div>
-            <!-- Contenedor de tarjetas de monedas, se llena con JS -->
-            <div class="currency-grid" id="currency-grid"></div>
+
+            <!-- Barra de control y filtrado de monedas -->
+            <div class="currencies-toolbar">
+                <div class="filter-pills" id="currency-filters">
+                    <button type="button" class="filter-pill active" data-filter="all" aria-pressed="true">Todas las monedas (17)</button>
+                    <button type="button" class="filter-pill" data-filter="america" aria-pressed="false">América</button>
+                    <button type="button" class="filter-pill" data-filter="europe" aria-pressed="false">Europa</button>
+                    <button type="button" class="filter-pill" data-filter="asia-oceania" aria-pressed="false">Asia & Oceanía</button>
+                    <button type="button" class="filter-pill" data-filter="africa" aria-pressed="false">África</button>
+                    <button type="button" class="filter-pill" data-filter="crypto" aria-pressed="false">Crypto</button>
+                </div>
+                <div class="market-timestamp" id="last-update-text">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span>Actualizando cada 3 segundos</span>
+                </div>
+            </div>
+
+            <!-- Grilla interactiva de tarjetas de monedas -->
+            <div class="currency-grid" id="currency-grid">
+                <!-- Se inyecta dinámicamente desde script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECCIÓN DE CALCULADORA DE CONVERSIÓN DE DIVISAS ========== -->
+    <section class="section calculator-section" id="calculadora">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Herramienta Financiera</span>
+                <h2>Calculadora de Conversión de Divisas</h2>
+                <p>Convierte montos instantáneamente utilizando las tasas de cambio sincronizadas en tiempo real con el mercado.</p>
+            </div>
+
+            <div class="calculator-container card">
+                <div class="calculator-grid">
+                    <!-- Formulario de conversión -->
+                    <div class="calc-form-panel">
+                        <div class="calc-input-group">
+                            <label for="calc-amount">Cantidad a convertir</label>
+                            <div class="input-with-symbol">
+                                <span class="input-prefix" id="calc-amount-prefix">$</span>
+                                <input type="number" id="calc-amount" value="1000" min="0" step="any" inputmode="decimal" placeholder="0.00" aria-label="Cantidad a convertir" />
+                            </div>
+                        </div>
+
+                        <!-- Botones de montos rápidos -->
+                        <div class="quick-amounts">
+                            <span>Montos rápidos:</span>
+                            <button type="button" class="quick-amt-btn" data-amt="100">$100</button>
+                            <button type="button" class="quick-amt-btn active" data-amt="1000">$1,000</button>
+                            <button type="button" class="quick-amt-btn" data-amt="5000">$5,000</button>
+                            <button type="button" class="quick-amt-btn" data-amt="10000">$10,000</button>
+                        </div>
+
+                        <!-- Selectores de divisas con botón de intercambio (Swap) -->
+                        <div class="currencies-selectors-row">
+                            <div class="calc-selector-box">
+                                <label for="calc-from-currency">Moneda de Origen</label>
+                                <div class="select-wrapper">
+                                    <span class="select-flag" id="calc-from-flag">🇺🇸</span>
+                                    <select id="calc-from-currency" aria-label="Moneda de origen">
+                                        <!-- Opciones generadas por JS -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn-swap" id="btn-swap-currencies" title="Invertir monedas" aria-label="Intercambiar moneda de origen y destino">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="17 1 21 5 17 9"></polyline>
+                                    <path d="M3 5h18"></path>
+                                    <polyline points="7 23 3 19 7 15"></polyline>
+                                    <path d="M21 19H3"></path>
+                                </svg>
+                            </button>
+
+                            <div class="calc-selector-box">
+                                <label for="calc-to-currency">Moneda de Destino</label>
+                                <div class="select-wrapper">
+                                    <span class="select-flag" id="calc-to-flag">🇨🇴</span>
+                                    <select id="calc-to-currency" aria-label="Moneda de destino">
+                                        <!-- Opciones generadas por JS -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-calc-action" id="btn-convert-action">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                            <span>Convertir y Actualizar</span>
+                        </button>
+                    </div>
+
+                    <!-- Panel de visualización de resultado -->
+                    <div class="calc-result-panel">
+                        <div class="result-badge">
+                            <span class="pulse-indicator"></span>
+                            <span>Tasa de mercado activa</span>
+                        </div>
+
+                        <div class="result-formula-label" id="calc-formula-text">1,000 USD equivalen a</div>
+                        <div class="result-main-value" id="calc-result-display">3,950,000.00 COP</div>
+                        <div class="result-destination-label" id="calc-dest-full-name">Peso colombiano (Colombia)</div>
+
+                        <div class="exchange-rate-details">
+                            <div class="rate-row">
+                                <span class="rate-name">Tasa de cambio directa:</span>
+                                <span class="rate-val" id="calc-direct-rate">1 USD = 3,950.00 COP</span>
+                            </div>
+                            <div class="rate-row">
+                                <span class="rate-name">Tasa de cambio inversa:</span>
+                                <span class="rate-val" id="calc-inverse-rate">1 COP = 0.000253 USD</span>
+                            </div>
+                            <div class="rate-row">
+                                <span class="rate-name">Última fluctuación:</span>
+                                <span class="rate-val rate-synced" id="calc-sync-status">Sincronizado en tiempo real</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECCIÓN DE TABLA DE MONEDAS ========== -->
+    <section class="section table-section" id="tabla-monedas">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Datos del Mercado</span>
+                <h2>Tabla Completa de Divisas</h2>
+                <p>Información detallada y actualizada de todas las monedas disponibles en la plataforma.</p>
+            </div>
+            <div class="table-wrapper card">
+                <table class="currencies-table" id="currencies-table">
+                    <thead>
+                        <tr>
+                            <th>Moneda</th>
+                            <th>Código</th>
+                            <th>Símbolo</th>
+                            <th>Precio (por 1 USD)</th>
+                            <th>Variación</th>
+                            <th>Tendencia</th>
+                        </tr>
+                    </thead>
+                    <tbody id="currencies-table-body">
+                        <!-- Generado por JavaScript -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
 
@@ -92,30 +327,111 @@
     <section class="section trends-section" id="tendencias">
         <div class="container">
             <div class="section-header">
-                <h2>Tendencias del mercado</h2>
-                <p>Visualiza el comportamiento general y los movimientos más destacados.</p>
+                <span class="section-tag">Análisis Financiero</span>
+                <h2>Tendencias del Mercado Global</h2>
+                <p>Comportamiento histórico del índice cambiario, mayor volatilidad y ranking de rendimiento.</p>
             </div>
-            <div class="trends-container">
-                <!-- Gráfico principal -->
-                <div class="trend-chart card">
-                    <h3>Índice GlobalCurrency</h3>
-                    <div class="chart-wrapper">
-                        <svg id="main-chart" viewBox="0 0 600 250" preserveAspectRatio="none"></svg>
+
+            <div class="trend-categories-grid">
+                <div class="trend-cat-card card trend-cat-up">
+                    <div class="trend-cat-header">
+                        <span class="trend-cat-emoji">📈</span>
+                        <div>
+                            <h3>Tendencia al Alza</h3>
+                            <span class="trend-cat-sub">Monedas que se aprecian</span>
+                        </div>
                     </div>
+                    <ul class="trend-cat-list" id="trend-up-list"></ul>
+                </div>
+                <div class="trend-cat-card card trend-cat-down">
+                    <div class="trend-cat-header">
+                        <span class="trend-cat-emoji">📉</span>
+                        <div>
+                            <h3>Tendencia a la Baja</h3>
+                            <span class="trend-cat-sub">Monedas que se deprecian</span>
+                        </div>
+                    </div>
+                    <ul class="trend-cat-list" id="trend-down-list"></ul>
+                </div>
+                <div class="trend-cat-card card trend-cat-stable">
+                    <div class="trend-cat-header">
+                        <span class="trend-cat-emoji">➖</span>
+                        <div>
+                            <h3>Estables</h3>
+                            <span class="trend-cat-sub">Sin variación significativa</span>
+                        </div>
+                    </div>
+                    <ul class="trend-cat-list" id="trend-stable-list"></ul>
+                </div>
+            </div>
+            <div class="trend-disclaimer">
+                <p>⚠️ <strong>Nota educativa:</strong> Las tendencias mostradas son generadas a partir de oscilaciones simuladas con fines demostrativos. No representan información financiera en tiempo real.</p>
+            </div>
+
+            <div class="trends-container">
+                <!-- Gráfico interactivo principal -->
+                <div class="trend-chart card">
+                    <div class="chart-header">
+                        <div class="chart-title-box">
+                            <h3>Índice Compuesto GlobalCurrency (GCI)</h3>
+                            <span class="chart-subtitle">Promedio ponderado de divisas internacionales</span>
+                        </div>
+                        <div class="chart-period-tabs" id="chart-period-tabs">
+                            <button class="period-tab active" data-period="1D">1D</button>
+                            <button class="period-tab" data-period="1S">1S</button>
+                            <button class="period-tab" data-period="1M">1M</button>
+                            <button class="period-tab" data-period="1A">1A</button>
+                        </div>
+                    </div>
+
+                    <div class="chart-metrics-row">
+                        <div class="chart-metric">
+                            <span class="metric-lbl">Índice Actual</span>
+                            <span class="metric-val text-cyan" id="current-index-val">102.45 pts</span>
+                        </div>
+                        <div class="chart-metric">
+                            <span class="metric-lbl">Variación Período</span>
+                            <span class="metric-val text-green" id="current-index-change">+0.84%</span>
+                        </div>
+                        <div class="chart-metric">
+                            <span class="metric-lbl">Volatilidad Global</span>
+                            <span class="metric-val text-muted">Baja (0.18%)</span>
+                        </div>
+                    </div>
+
+                    <div class="chart-wrapper">
+                        <svg id="main-chart" viewBox="0 0 700 260" preserveAspectRatio="none"></svg>
+                    </div>
+
                     <div class="chart-legend">
-                        <span><span class="dot dot-up"></span> Subiendo</span>
-                        <span><span class="dot dot-down"></span> Bajando</span>
+                        <span><span class="dot dot-up"></span> Tendencia Alcista</span>
+                        <span><span class="dot dot-down"></span> Presión Bajista</span>
+                        <span><span class="dot dot-cyan"></span> Índice de Referencia</span>
                     </div>
                 </div>
-                <!-- Listas de ganadores y perdedores -->
+
+                <!-- Listas de mayores alzas y bajas en vivo -->
                 <div class="gainers-losers">
                     <div class="card gainers">
-                        <h3>Mayores alzas</h3>
-                        <ul id="gainers-list"></ul>
+                        <div class="rank-card-header">
+                            <div class="rank-icon rank-up">▲</div>
+                            <div>
+                                <h3>Mayores Alzas del Día</h3>
+                                <span class="rank-sub">Monedas con mayor apreciación</span>
+                            </div>
+                        </div>
+                        <ul id="gainers-list" class="rank-list"></ul>
                     </div>
+
                     <div class="card losers">
-                        <h3>Mayores bajas</h3>
-                        <ul id="losers-list"></ul>
+                        <div class="rank-card-header">
+                            <div class="rank-icon rank-down">▼</div>
+                            <div>
+                                <h3>Mayores Bajas del Día</h3>
+                                <span class="rank-sub">Monedas con mayor depreciación</span>
+                            </div>
+                        </div>
+                        <ul id="losers-list" class="rank-list"></ul>
                     </div>
                 </div>
             </div>
@@ -126,51 +442,106 @@
     <section class="section tips-section" id="consejos">
         <div class="container">
             <div class="section-header">
+                <span class="section-tag">Estrategia & Finanzas</span>
                 <h2>Consejos para impulsar tu empresa</h2>
-                <p>Recomendaciones estratégicas según el tamaño de tu organización.</p>
+                <p>Guías prácticas y directrices financieras estructuradas según la escala de tu modelo de negocio.</p>
             </div>
+
             <div class="tips-grid">
                 <!-- Tarjeta Pequeña Empresa -->
                 <div class="tip-card card" data-tip="pequena">
-                    <div class="tip-icon">🏪</div>
-                    <h3>Pequeña empresa</h3>
-                    <p>Fortalece las bases y asegura un crecimiento sostenido.</p>
+                    <div class="tip-top">
+                        <div class="tip-icon-box">🏪</div>
+                        <span class="tip-badge">Etapa Inicial / Pyme</span>
+                    </div>
+                    <h3>Pequeña Empresa</h3>
+                    <p class="tip-desc">Protege tu negocio de las fluctuaciones cambiarias y optimiza tus operaciones de importación y exportación.</p>
                     <ul class="tip-list">
-                        <li>Controla tus gastos operativos</li>
-                        <li>Administra el flujo de caja</li>
-                        <li>Invierte de forma inteligente</li>
-                        <li>Busca crecimiento progresivo</li>
-                        <li>Conoce a tu mercado</li>
+                        <li>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Monitorea el tipo de cambio:</strong> Revisa diariamente las tasas antes de realizar compras internacionales o fijar precios de venta.</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Presupuesta con margen cambiario:</strong> Incluye un colchón del 5-10% en tus cotizaciones para absorber variaciones inesperadas del dólar.</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Diversifica proveedores:</strong> No dependas de un solo país; tener proveedores en diferentes monedas reduce el riesgo de exposición.</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Actualiza precios regularmente:</strong> Ajusta tus listas de precios cuando el tipo de cambio varíe más del 3% para proteger tus márgenes.</span>
+                        </li>
                     </ul>
-                    <button class="btn btn-outline btn-ver-mas" data-tip-target="pequena">Ver más</button>
+                    <button class="btn btn-outline btn-ver-mas" data-tip-target="pequena">
+                        <span>Ver más detalles</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
                 </div>
+
                 <!-- Tarjeta Mediana Empresa -->
                 <div class="tip-card card" data-tip="mediana">
-                    <div class="tip-icon">🏢</div>
-                    <h3>Mediana empresa</h3>
-                    <p>Optimiza procesos y prepárate para escalar.</p>
+                    <div class="tip-top">
+                        <div class="tip-icon-box">🏢</div>
+                        <span class="tip-badge">Escalamiento</span>
+                    </div>
+                    <h3>Mediana Empresa</h3>
+                    <p class="tip-desc">Implementa estrategias de cobertura cambiaria y planifica tus operaciones internacionales con mayor sofisticación.</p>
                     <ul class="tip-list">
-                        <li>Planifica una expansión estratégica</li>
-                        <li>Optimiza tus procesos internos</li>
-                        <li>Adopta tecnología clave</li>
-                        <li>Diversifica tus fuentes de ingreso</li>
-                        <li>Gestiona equipos eficientemente</li>
+                        <li>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Contratos a plazo (forwards):</strong> Fija el tipo de cambio para tus importaciones futuras y elimina la incertidumbre en tus costos.</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Cuentas multidivisa:</strong> Abre cuentas bancarias en USD, EUR y otras monedas clave para manejar pagos internacionales sin conversiones innecesarias.</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Planificación de pagos estratégica:</strong> Programa tus pagos internacionales en momentos favorables del ciclo cambiario mensual.</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Monitorea políticas de bancos centrales:</strong> Las decisiones de la Fed, BCE y otros bancos centrales afectan directamente el costo de tus importaciones y exportaciones.</span>
+                        </li>
                     </ul>
-                    <button class="btn btn-outline btn-ver-mas" data-tip-target="mediana">Ver más</button>
+                    <button class="btn btn-outline btn-ver-mas" data-tip-target="mediana">
+                        <span>Ver más detalles</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
                 </div>
+
                 <!-- Tarjeta Gran Empresa -->
                 <div class="tip-card card" data-tip="grande">
-                    <div class="tip-icon">🏦</div>
-                    <h3>Gran empresa</h3>
-                    <p>Consolida tu posición y lidera en mercados globales.</p>
+                    <div class="tip-top">
+                        <div class="tip-icon-box">🏦</div>
+                        <span class="tip-badge">Liderazgo Global</span>
+                    </div>
+                    <h3>Gran Empresa</h3>
+                    <p class="tip-desc">Gestiona el riesgo cambiario con instrumentos financieros avanzados y optimiza la tesorería multinacional.</p>
                     <ul class="tip-list">
-                        <li>Desarrolla estrategias internacionales</li>
-                        <li>Gestiona riesgos corporativos</li>
-                        <li>Fomenta la innovación continua</li>
-                        <li>Analiza mercados profundamente</li>
-                        <li>Planifica inversiones a largo plazo</li>
+                        <li>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Cobertura con derivados (hedging):</strong> Utiliza futuros, opciones y swaps de divisas para proteger márgenes en operaciones multimillonarias.</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Cobertura natural:</strong> Equilibra ingresos y gastos en la misma moneda a través de operaciones en múltiples países.</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Comité de riesgo cambiario:</strong> Establece un equipo dedicado a monitorear exposiciones, fijar políticas de cobertura y reportar riesgos.</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>Diversificación geográfica:</strong> Distribuye operaciones en diferentes zonas monetarias (USD, EUR, Asia) para reducir la concentración del riesgo.</span>
+                        </li>
                     </ul>
-                    <button class="btn btn-outline btn-ver-mas" data-tip-target="grande">Ver más</button>
+                    <button class="btn btn-outline btn-ver-mas" data-tip-target="grande">
+                        <span>Ver más detalles</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -179,12 +550,41 @@
     <!-- ========== SECCIÓN INFORMATIVA / ACERCA DE ========== -->
     <section class="section about-section" id="acerca">
         <div class="container">
-            <div class="section-header">
-                <h2>Acerca de la plataforma</h2>
-            </div>
-            <div class="about-content card">
-                <p><strong>GlobalCurrency</strong> es una plataforma diseñada para facilitar la visualización de información económica y financiera de diferentes países, ofreciendo además consejos generales orientados al crecimiento empresarial. Nuestro objetivo es brindar una experiencia clara, moderna y confiable para estudiantes, profesionales y organizaciones.</p>
-                <p class="academic-note">⚠️ <em>Nota académica:</em> Esta versión es un proyecto universitario. Los datos mostrados pueden ser simulados o demostrativos y no deben usarse para decisiones financieras reales.</p>
+            <div class="about-card card">
+                <div class="about-header">
+                    <div class="about-logo-badge">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                    </div>
+                    <div>
+                        <h2>Acerca de GlobalCurrency</h2>
+                        <span class="about-school">Proyecto Institucional • Colegio Bilingüe Los Ángeles</span>
+                    </div>
+                </div>
+
+                <div class="about-body">
+                    <p>
+                        <strong>GlobalCurrency</strong> es una iniciativa académica creada para fomentar la educación financiera, el análisis de los mercados cambiarios mundiales y la comprensión de estrategias de gestión empresarial en el <strong>Colegio Bilingüe Los Ángeles</strong>.
+                    </p>
+                    <p>
+                        A través de una interfaz interactiva y moderna inspirada en las principales plataformas financieras internacionales, los estudiantes, docentes y usuarios pueden explorar el impacto de las fluctuaciones de divisas, calcular conversiones con exactitud y familiarizarse con la toma de decisiones empresariales informadas.
+                    </p>
+
+                    <div class="student-credit">
+                        <div class="credit-icon">👨💻</div>
+                        <div class="credit-info">
+                            <span class="credit-label">Desarrollado por</span>
+                            <span class="credit-name">Estudiante: Elvin Chen</span>
+                        </div>
+                    </div>
+
+                    <div class="academic-disclaimer">
+                        <div class="disclaimer-icon">⚠️</div>
+                        <div class="disclaimer-text">
+                            <strong>Aviso Académico e Institucional:</strong>
+                            <p>Esta plataforma fue desarrollada con fines exclusivamente educativos y demostrativos para el Colegio Bilingüe Los Ángeles. Las variaciones de tipo de cambio y los cálculos numéricos generados en tiempo real son simulaciones programadas y no deben emplearse para transacciones u operaciones financieras reales.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -195,36 +595,83 @@
             <div class="footer-brand">
                 <div class="logo footer-logo">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 7V17M9 10C9 8.89543 9.89543 8 11 8H12C13.1046 8 14 8.89543 14 10C14 11.1046 13.1046 12 12 12H11C9.89543 12 9 12.8954 9 14C9 15.1046 9.89543 16 11 16H13C14.1046 16 15 15.1046 15 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="12" cy="12" r="10" stroke="#38bdf8" stroke-width="2"/>
+                        <path d="M12 6V18M8.5 9.5C8.5 8.11929 9.61929 7 11 7H13C14.3807 7 15.5 8.11929 15.5 9.5C15.5 10.8807 14.3807 12 13 12H11C9.61929 12 8.5 13.1193 8.5 14.5C8.5 15.8807 9.61929 17 11 17H13.5C14.8807 17 16 15.8807 16 14.5" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                     <span>GlobalCurrency</span>
                 </div>
-                <p>Plataforma financiera moderna para el seguimiento de monedas y asesoría empresarial.</p>
+                <p class="footer-desc">
+                    Plataforma financiera integral para el análisis de monedas internacionales, conversión de divisas en tiempo real y asesoramiento estratégico empresarial.
+                </p>
+                <div class="school-badge-footer">
+                    <span>🏛️ Colegio Bilingüe Los Ángeles</span>
+                </div>
+                <div class="student-credit-footer">
+                    <span>👨💻 Realizado por: <strong>Elvin Chen</strong></span>
+                </div>
             </div>
-            <div class="footer-links">
-                <h4>Enlaces rápidos</h4>
-                <a href="#inicio">Inicio</a>
-                <a href="#monedas">Monedas</a>
-                <a href="#tendencias">Tendencias</a>
-                <a href="#consejos">Consejos empresariales</a>
+
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#monedas">Monedas Internacionales</a></li>
+                    <li><a href="#calculadora">Calculadora de Conversión</a></li>
+                    <li><a href="#tabla-monedas">Tabla de Monedas</a></li>
+                    <li><a href="#tendencias">Tendencias de Mercado</a></li>
+                    <li><a href="#consejos">Consejos Empresariales</a></li>
+                    <li><a href="#acerca">Acerca de</a></li>
+                </ul>
             </div>
-            <div class="footer-info">
-                <h4>Información académica</h4>
-                <p>Proyecto universitario desarrollado con fines educativos. Los datos son simulados.</p>
+
+            <div class="footer-col">
+                <h4>Mercados Destacados</h4>
+                <ul class="footer-links">
+                    <li><a href="#monedas">USD - Dólar estadounidense</a></li>
+                    <li><a href="#monedas">EUR - Euro</a></li>
+                    <li><a href="#monedas">GBP - Libra esterlina</a></li>
+                    <li><a href="#monedas">COP - Peso colombiano</a></li>
+                    <li><a href="#monedas">DZD - Dinar argelino</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Institución</h4>
+                <p class="footer-info-text">
+                    Desarrollo de proyecto académico para formación en ciencias económicas, tecnología y negocios globales.
+                </p>
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span>Sistema Operativo Online</span>
+                </div>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2026 GlobalCurrency. Proyecto académico.</p>
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 GlobalCurrency. Proyecto del Colegio Bilingüe Los Ángeles. Realizado por Elvin Chen. Todos los derechos reservados.</p>
+                <p class="footer-disclaimer-text">Los valores mostrados y las fluctuaciones son de carácter educativo/demostrativo y no representan tasas de mercado en tiempo real.</p>
+                <div class="footer-bottom-links">
+                    <a href="#acerca">Términos Académicos</a>
+                    <span>•</span>
+                    <a href="#acerca">Privacidad Educativa</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <!-- ========== MODALES DE CONSEJOS ========== -->
-    <div class="modal-overlay" id="modal-overlay">
+    <!-- ========== VENTANA MODAL DE CONSEJOS EMPRESARIALES ========== -->
+    <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal card" id="modal-content">
-            <button class="modal-close" id="modal-close" aria-label="Cerrar">&times;</button>
-            <h3 id="modal-title"></h3>
-            <div id="modal-body"></div>
+            <button class="modal-close" id="modal-close" aria-label="Cerrar modal">&times;</button>
+            <div class="modal-header-icon" id="modal-icon">💼</div>
+            <h3 id="modal-title">Título del Consejo</h3>
+            <div id="modal-body" class="modal-body">
+                <!-- Inyectado por JS -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal-btn-close">Entendido</button>
+            </div>
         </div>
     </div>
 
